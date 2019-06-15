@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row divider">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>Edit  {{package.name}}</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1 padding-top">
+			<form action="{{ url_for('editPackage',package_id = package.id)}}" method = "post">
+				<div class="form-group">
+					<label for="name"><font color="#FF4500">Name:</font></label>
+					<input type ="text" class="form-control" name="name" value="{{package.name }}">
+					<div class="padding-bottom"></div>
+					<button type="submit" class="btn btn-success" id="submit" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
+					<button class="btn btn-danger">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+				</div>
+			</form>
+			<a href = '{{url_for('showPackages')}}'>   
+				
+			</a>		
+		</div>
+	</div>
+{% endblock %}   

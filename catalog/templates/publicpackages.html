@@ -1,0 +1,57 @@
+{% extends "main.html" %}
+{% block content %}
+	<div class="row top-menu">
+		<div class="col-md-10"></div>
+		<div class="col-md-2 text-right">
+			<a href="{{url_for('showLogin')}}"><button class="btn btn-primary my-2 my-sm-0">Login</button></a>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row banner main" style="margin-top: -30px;">		
+			<div class="col-md-12 padding-none">
+				<h1 align="center"><font color="#FFF" style="text-shadow: 0px 2px 8px black;">Queens Beauty Places</font></h1><!-- #FF4500 -->
+			</div>
+		</div>
+		<div class="row divider">
+			<div class="col-md-12"></div>
+		</div>	
+	</div>
+     
+	<div class = 'flash'>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<ul>
+					{% for message in messages %}
+						<li> <strong> {{ message }} </strong> </li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+    	{% endwith %}
+	</div>
+
+	<div class="card">
+		{% for package in packages %}
+				<div class="card-body">
+					<a href = "{{url_for('showMenu', package_id = package.id)}}">
+						<div class="row">
+							<div class="col-md-1"></div>
+								<div class="col-md-10 package-list">
+									<h3>{{package.name}}</h3>
+								</div>
+								<div class="col-md-1"></div>
+						</div>
+					</a>		
+				</div>
+		{% endfor %}
+	</div>		
+
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-1"></div>
+		<div class="col-md-10 padding-none">
+			
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+	
+{% endblock %}

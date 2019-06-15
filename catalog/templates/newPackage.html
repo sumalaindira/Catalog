@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row divider">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>New Beauty packages</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1 padding-top">     
+			<form action="#" method = "post">
+				<div class="form-group">
+				<h3><label for="name"><font color="#FF4500">Name:</font></label></h3>
+				<input type ="text" class="form-control" maxlength="100" name="name" id="name" placeholder="Enter name of the Beauty package" value="" required="required" data-error="Please enter Beauty parlour name.">
+				<div class="padding-bottom"></div>
+				<center><button type="submit" class="btn btn-round-sm btn-sm" id="submit" type="submit">
+				<h4><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span><font color="#FF4500">Create</font></button></center></h4>
+				</div>
+			</form>   
+		</div>
+	</div>
+{% endblock %}
+ <input name="full_name" id="full_name" placeholder="Full name" type="text" value="" required="required" data-error="Please enter your full name.">

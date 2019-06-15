@@ -1,0 +1,119 @@
+<html>
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+   <!-- <div class="row top-menu">
+        <div class="col-md-10"></div>
+        <div class="col-md-2 text-right">
+                    </div>
+    </div>
+    <div class="row divider">  
+        <div class="col-md-12"></div>
+    </div>
+    <div class="row banner main">
+        <div class="col-md-1"></div>
+        <div class="col-md-11 padding-none">
+            <h1 align="right"><font color="#FF4500">Queens Beauty Places</font></h1>
+        </div>
+    </div>   
+    <div class="row padding-top">-->
+	
+<!-- GOOGLE PLUS SIGN IN BUTTON-->          
+     <!--    <div class="myjumbotron">
+<div class="text-center"><button id="signinButton" class="btn btn-outline-primary"><i class="fab fa-google"></i> Signin </button></div>
+        <div id="result"></div>
+      </div>
+<script>
+      $('#signinButton').click(function() {
+        function signInCallback(authResult){
+          if (authResult['code']){
+            $('#signinButton').attr('style', 'display: none');
+            $.ajax({
+              type: 'POST',
+              url: '/gconnect?state={{STATE}}',
+              headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+              },
+              contentType: 'application/octet-stream; charset=utf-8',
+              success:function(result){
+                $('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...')
+                setTimeout(function() {
+                  window.location.href = "/package";
+                }, 2000);
+              },
+              processData:false,
+              data:authResult['code']
+            });
+          } else{
+            // handle error
+            console.log('There was an error: ' + authResult['error']);
+            $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+          }
+        }
+        auth2.grantOfflineAccess().then(signInCallback);
+      });
+	  
+	  
+    </script>-->
+<!--Sign In End -->
+<head>
+<meta name="google-signin-client_id" content="950873415778-lc4q57dpo5dsmnh4nl5ohlpoe91su0vm.apps.googleusercontent.com">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
+<script>
+  function start() {
+    gapi.load('auth2', function() {
+      auth2 = gapi.auth2.init({
+        client_id: '950873415778-lc4q57dpo5dsmnh4nl5ohlpoe91su0vm.apps.googleusercontent.com'
+      });
+    });
+  }
+</script>
+</head>
+<div>
+<div id="signinButton" style="padding: 5px;margin-top:10px;text-align: center;">
+  <span class="g-signin2"
+    data-scope="profile openid email"
+    data-client_id="950873415778-lc4q57dpo5dsmnh4nl5ohlpoe91su0vm.apps.googleusercontent.com"
+    data-redirecturi="postmessage"
+    data-accesstype="offline"
+    data-cookiepolicy="single_host_origin"
+    data-callback="signInCallback"
+    data-approvalprompt="force">
+  </span>
+</div>   
+
+<div id="result"></div>
+</div>
+<script>
+  $('#signinButton').click(function() {
+    function signInCallback(authResult){
+      if (authResult['code']){
+        $('#signinButton').attr('style', 'display: none');
+        $.ajax({
+          type: 'POST',
+          url: '/gconnect?state={{STATE}}',
+          headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+          },
+          contentType: 'application/octet-stream; charset=utf-8',
+          success:function(result){
+            $('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...')
+                 setTimeout(function() {
+                  window.location.href = "/package/";
+                 }, 2000);
+          },
+          processData:false,
+          data:authResult['code']
+        });
+      } else{
+        // handle error
+        console.log('There was an error: ' + authResult['error']);
+        $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+      }
+    }
+    auth2.grantOfflineAccess().then(signInCallback);
+  });
+</script>
+{% endblock %}
+</html>
